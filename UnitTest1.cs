@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Exercise3_AutomationCSharp.POM;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
 namespace Exercise3_AutomationCSharp
@@ -15,10 +16,23 @@ namespace Exercise3_AutomationCSharp
         //Repeat the same flow using Specflow and MSTest
         //Use configuration file for URL and username and password.
         //Use Nuget package manager for download all needed
+        AmazonFrontPage frontPage;
+        AmazonLoginPage loginPage;
+        AmazonProductDetailsPage productDetailsPage;
+        AmazonSearchResultsPage searchResultsPage;
+        [TestInitialize]
+        public void TestSuiteSetup() {
+            frontPage = new AmazonFrontPage();
+            loginPage = new AmazonLoginPage();
+            productDetailsPage = new AmazonProductDetailsPage();
+            searchResultsPage = new AmazonSearchResultsPage();
+        }
         [TestMethod]
         public void TestMethod1() {
             //Go to Amazon.com.mx
+            frontPage.GoToFrontPage();
             //Login with valid credentials
+
             //Search for product: Samsung Galaxy S9 64GB
             //Select first product and save the price
             //Click on the product
